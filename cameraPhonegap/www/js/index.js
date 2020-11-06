@@ -31,7 +31,6 @@ function onDeviceReady() {
 
 
 
-function startFoto() {
 	let options = { 
 		x: 0,
 		y: 0,
@@ -64,6 +63,3 @@ function take_picture() {
 		}
 	)
 }
-
-$("#tirarFoto").click(take_picture)
-startFoto()
