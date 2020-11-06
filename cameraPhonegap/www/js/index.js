@@ -27,3 +27,38 @@ function onDeviceReady() {
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     document.getElementById('deviceready').classList.add('ready');
 }
+
+function startFoto() {
+	let options = { 
+		x: 0,
+		y: 0,
+		width: window.screen.width,
+		height: window.screen.height - 200,
+		camera: CameraPreview.CAMERA_DIRECTION.FRONT,
+		tapPhoto: false
+	}
+	CameraPreview.startCamera(options);
+	$('#imagem').hide()
+	$('.ficoubom').hide()
+	$('.tirafoto').show()
+}
+
+function take_picture() {
+	CameraPreview.takePicture(
+		{quality: 85}, 
+		(base64PictureData) => {
+			CameraPreview.stopCamera()
+			src_base64_img = 'data:image/jpeg;base64,' + base64PictureData
+			
+			imageSrcData = 'data:image/jpeg;base64,' 
+							+ base64PictureData;
+			$('#imagem').attr('src', imageSrcData);
+			$('#imagem').show()
+			$('.tirafoto').hide()
+		},
+		(error) => {
+			$('#imagem').show()
+			$('.tirafoto').hide()
+		}
+	)
+}
