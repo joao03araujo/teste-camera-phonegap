@@ -28,6 +28,9 @@ function onDeviceReady() {
     document.getElementById('deviceready').classList.add('ready');
 }
 
+
+
+
 function startFoto() {
 	let options = { 
 		x: 0,
@@ -39,8 +42,7 @@ function startFoto() {
 	}
 	CameraPreview.startCamera(options);
 	$('#imagem').hide()
-	$('.ficoubom').hide()
-	$('.tirafoto').show()
+	$('#tirafoto').show()
 }
 
 function take_picture() {
@@ -62,3 +64,6 @@ function take_picture() {
 		}
 	)
 }
+
+$("#tirarFoto").click(take_picture)
+startFoto()
